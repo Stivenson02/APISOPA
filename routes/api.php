@@ -18,7 +18,18 @@ Route::get('/hola', function () {
     return "hello";
 });
 
-Route::get('prueba', [
-    'uses' => 'playerController@index',
-    'as' => 'prueba_phat'
+Route::get('create/{name}/{id}', [
+  'uses' => 'playerController@create',
+  'as' => 'create_phat'
 ]);
+
+Route::post('almacenar', [
+  'uses' => 'playerController@almacenarSopa',
+  'as' => 'almacenar_phat'
+]);
+
+Route::get('cargar/{id}', [
+  'uses' => 'playerController@cargarJuego',
+  'as' => 'cargar_phat'
+]);
+

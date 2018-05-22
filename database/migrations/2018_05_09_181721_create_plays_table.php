@@ -14,12 +14,16 @@ class CreatePlaysTable extends Migration {
     public function up() {
         Schema::create('plays', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tablero');
-            $table->string('tiempo');
-            $table->integer('estado');
-            $table->integer('code');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name')->nullable(true);
+            $table->integer('dimension')->nullable(true);
+            $table->mediumText('tablero')->nullable(true);
+            $table->mediumText('juego')->nullable(true);
+            $table->string('solucion')->nullable(true);
+            $table->string('posiciones')->nullable(true);
+            $table->string('tiempo')->nullable(true);
+            $table->integer('estado')->nullable(true);
+            $table->integer('code')->nullable(true);
+            $table->integer('type')->nullable(true);
             $table->timestamps();
         });
     }
