@@ -79,7 +79,7 @@ class playerController extends Controller {
                     $juego[$i] = $key;
                 }
             }
-            return $solucion;
+
             $juegonuevo = new Play();
             $juegonuevo->tablero = implode($tablero);
             $juegonuevo->juego = implode($juego);
@@ -88,9 +88,10 @@ class playerController extends Controller {
             $juegonuevo->type = 1;
             $juegonuevo->estado = 1;
             $juegonuevo->dimension = $dimension;
+            $juegonuevo->code = $id;
             $juegonuevo->name = $name;
             if ($juegonuevo->save()) {
-                return [$juegonuevo->id, $dimension, $tablero, $solucion, $palabraentablero];
+                return [$juegonuevo->id, $dimension, $id, $tablero, $solucion, $palabraentablero];
             }
         }
     }
@@ -111,7 +112,7 @@ class playerController extends Controller {
         $tablero = str_split($juego->tablero);
         $solucion = str_split($juego->solucion);
         $palabraentablero = explode(",", $juego->posiciones);
-        return [$juego->id, $juego->dimension, $tablero, $solucion, $palabraentablero];
+        return [$juego->id, $juego->dimension, $juego->code, $tablero, $solucion, $palabraentablero];
     }
 
 }
